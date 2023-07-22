@@ -6,7 +6,7 @@
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 09:59:31 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/07/22 09:59:38 by nde-la-f         ###   ########.fr       */
+/*   Updated: 2023/07/22 11:19:03 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define MINITALK_H
 
 # include <signal.h>
+# include "libft.h"
 
 #endif

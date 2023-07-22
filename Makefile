@@ -47,7 +47,7 @@ LIBFT_DIR	=	./libft
 SRC_C	=	client.c
 SRC_S	=	server.c
 INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack \
-			-I$(LIBFT_DIR)/get_next_line
+			-I$(LIBFT_DIR)/GNL
 
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
