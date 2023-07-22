@@ -1,9 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/21 10:34:25 by nde-la-f          #+#    #+#              #
+#    Updated: 2023/07/22 12:36:51 by nde-la-f         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 #---------------------------------------------------#
-#                   MINITALK MAKEFILE               #
+#                   LIBFT MAKEFILE     				#
 #---------------------------------------------------#
 
-# Library Name #
-NAME	=	minitalk.a
+# Name of the output library
+NAME = libft.a
+
+# Name of the output library for bonus
+NAME_BONUS = .bonus
 
 # Define some color codes for pretty printing
 RED = \033[91m
@@ -11,7 +26,6 @@ YELLOW = \033[93m
 WHITE = \033[97m
 GREEN = \033[92m
 DEF_CL = \033[m
-RESET  = \e[0m
 CYAN = \033[96m
 
 #---------------------------------------------------#
@@ -30,82 +44,103 @@ RM = rm -f
 # Command to run norminette
 NORM = norminette -R CheckForbiddenSourceHeader .
 
-#---------------------------------------------------#
-#                   SOURCE FILES                    #
-#---------------------------------------------------#
-
-# Executable Names
-CLIENT	=	client
-SERVER	=	server
-
-# libft Variables
-LIBFT		=	./libft/libft.a
-LIBFT_DIR	=	./libft
-
-# ft_printf Variables
-FT_PRINTF = ./ft_printf/ft_printf.a
-FT_PRINTF_DIR = ./ft_printf
-
-# Mandatory Variables
-SRC_C	=	client.c
-SRC_S	=	server.c
-INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack -I$(LIBFT_DIR)/GNL -I$(FT_PRINTF_DIR)
-
-_SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
-_INFO		=	[$(YELLOW)INFO$(RESET)]
-
-# Debugger
-ifeq ($(DEBUG), 1)
-	D_FLAG	=	-g
-endif
-
-# Fsanitize
-ifeq ($(SANITIZE), 1)
-	D_FLAG	=	-fsanitize=leak -g
-endif
+# Command to create a library archive
+AR = ar -rcs
 
 #---------------------------------------------------#
-#                   MAIN TARGET                     #
+#                   SOURCE FILES					#
 #---------------------------------------------------#
 
-all: $(SERVER) $(CLIENT)
+# Header file
+HEADER = libft.h
 
-$(NAME): all
+# Source files
+SRC    = ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isdigit.c ft_isprint.c  \
+ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
+ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
+ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c \
+ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_strmapi.c ft_itoa.c \
+ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
-$(SERVER): $(LIBFT) $(FT_PRINTF)
-	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_S) $(LIBFT) $(FT_PRINTF) $(INC) -o $(SERVER)
-	@printf "$(_SUCCESS) server ready.\n"
+# Bonus source files
+BONUS  = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-$(CLIENT): $(LIBFT) $(FT_PRINTF)
-	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_C) $(LIBFT) $(FT_PRINTF) $(INC) -o $(CLIENT)
-	@printf "$(_SUCCESS) client ready.\n"
+# Object files generated from source files
+OBJ    = $(SRC:.c=.o)
 
-$(LIBFT):
-	@ $(MAKE) DEBUG=$(DEBUG) -C $(LIBFT_DIR)
+# Object files generated from bonus source files
+OBJ_BONUS = ${BONUS:.c=.o}
 
-$(FT_PRINTF):
-	@ $(MAKE) -C $(FT_PRINTF_DIR)
+# Dependencies generated from source files
+DEPS   = $(SRC:.c=.d)
+
+# Dependencies generated from bonus source files
+DEPS_BONUS = $(BONUS:.c=.d)
+
+#---------------------------------------------------#
+#                   OBJECT FILES					#
+#---------------------------------------------------#
+
+# Rule to generate an object file from a C source file
+%.o: %.c Makefile
+	@$(CC) $(CFLAGS) -MMD -I./ -c $< -o $@
+	@echo "$(CYAN)Compiling: $(CYAN)$<$(DEF_CL) $(GREEN)[OK]$(DEF_CL)"
+
+#---------------------------------------------------#
+#                   MAIN TARGET   					#
+#---------------------------------------------------#
+
+# Default rule to build the main library
+all: $(NAME)
+
+# Include dependencies for all source files
+-include $(DEPS)
+
+# Rule to build the main library
+$(NAME): $(OBJ)
+	@$(AR) $(NAME) $(OBJ)
+	@echo "Compilation $(GREEN) Completed ! $(DEF_CL)"
+
+# Rule to build the bonus library
+bonus: $(NAME_BONUS)
+
+# Include dependencies for all bonus source files
+-include $(DEPS_BONUS)
+
+# Rule to build the bonus library
+$(NAME_BONUS): $(OBJ) ${OBJ_BONUS}
+	@$(AR) $(NAME) $(OBJ) $(OBJ_BONUS)
+	@touch .bonus
+	@echo "Compilation with $(YELLOW)bonus $(GREEN)completed!$(DEF_CL)"
+
+#---------------------------------------------------#
+#                    CLEANING   					#
+#---------------------------------------------------#
 
 # Rule to clean up object files and dependencies
 clean:
-	@ $(RM) $(CLIENT) $(SERVER)
-	@printf "$(_INFO) client removed.\n"
-	@printf "$(_INFO) server removed.\n"
+	@$(RM) $(OBJ) $(OBJ_BONUS)
+	@echo "$(CYAN)	Deleted objects: $(RED)$(OBJ) $(OBJ_BONUS) $(DEF_CL)"
+	@$(RM) $(DEPS) $(DEPS_BONUS)
+	@echo "$(CYAN)	Deleted dependencies: $(RED)$(DEPS) $(DEPS_BONUS) $(DEF_CL)"
 
-# Rule to remove the compiled library file and cleaned object files
-fclean:
-	@ $(MAKE) fclean -C $(LIBFT_DIR)
-	@ $(MAKE) fclean -C $(FT_PRINTF_DIR)
-	@ $(RM) $(CLIENT) $(SERVER)
-	@printf "$(_INFO) client removed.\n"
-	@printf "$(_INFO) server removed.\n"
+#Rule to remove the compiled library file and cleaned object files
+fclean: clean
+	@$(RM) $(NAME)
+	@echo "$(CYAN)	DELETED: $(RED)$(NAME)$(DEF_CL)"
+
+#---------------------------------------------------#
+#               ADDITIONAL TARGET  					#
+#---------------------------------------------------#
 
 # Rule to completely rebuild the program from scratch
 re: fclean all
 
-mandatory:	$(CLIENT) $(SERVER)
-
-m : mandatory
+# Rule to apply and print norminette
+norm:
+	@echo "$(YELLOW)Norminette says:$(DEF_CL)"
+	@$(NORM)
 
 # Rule to tell make that the listed targets do not correspond to actual files.
-.PHONY: all clean fclean re mandatory m bonus b $(NAME) $(LIBFT) $(FT_PRINTF)
+.PHONY: all bonus clean fclean re norm

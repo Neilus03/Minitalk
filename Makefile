@@ -42,10 +42,14 @@ SERVER	=	server
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 
+# ft_printf Variables
+FT_PRINTF = ./ft_printf/ft_printf.a
+FT_PRINTF_DIR = ./ft_printf
+
 # Mandatory Variables
 SRC_C	=	client.c
 SRC_S	=	server.c
-INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack -I$(LIBFT_DIR)/GNL
+INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack -I$(LIBFT_DIR)/GNL -I$(FT_PRINTF_DIR)
 
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
@@ -68,17 +72,19 @@ all: $(SERVER) $(CLIENT)
 
 $(NAME): all
 
-$(SERVER): $(LIBFT)
-	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_S) $(LIBFT) $(INC) -o $(SERVER)
+$(SERVER): $(LIBFT) $(FT_PRINTF)
+	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_S) $(LIBFT) $(FT_PRINTF) $(INC) -o $(SERVER)
 	@printf "$(_SUCCESS) server ready.\n"
 
-$(CLIENT): $(LIBFT)
-	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_C) $(LIBFT) $(INC) -o $(CLIENT)
+$(CLIENT): $(LIBFT) $(FT_PRINTF)
+	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_C) $(LIBFT) $(FT_PRINTF) $(INC) -o $(CLIENT)
 	@printf "$(_SUCCESS) client ready.\n"
-
 
 $(LIBFT):
 	@ $(MAKE) DEBUG=$(DEBUG) -C $(LIBFT_DIR)
+
+$(FT_PRINTF):
+	@ $(MAKE) -C $(FT_PRINTF_DIR)
 
 # Rule to clean up object files and dependencies
 clean:
@@ -89,6 +95,7 @@ clean:
 # Rule to remove the compiled library file and cleaned object files
 fclean:
 	@ $(MAKE) fclean -C $(LIBFT_DIR)
+	@ $(MAKE) fclean -C $(FT_PRINTF_DIR)
 	@ $(RM) $(CLIENT) $(SERVER)
 	@printf "$(_INFO) client removed.\n"
 	@printf "$(_INFO) server removed.\n"
@@ -101,4 +108,4 @@ mandatory:	$(CLIENT) $(SERVER)
 m : mandatory
 
 # Rule to tell make that the listed targets do not correspond to actual files.
-.PHONY: all clean fclean re mandatory m bonus b $(NAME) $(LIBFT)
+.PHONY: all clean fclean re mandatory m bonus b $(NAME) $(LIBFT) $(FT_PRINTF)
