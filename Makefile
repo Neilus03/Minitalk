@@ -2,7 +2,7 @@
 #                   MINITALK MAKEFILE               #
 #---------------------------------------------------#
 
-	# Library Name #
+# Library Name #
 NAME	=	minitalk.a
 
 # Define some color codes for pretty printing
@@ -22,7 +22,7 @@ CYAN = \033[96m
 CC = gcc
 
 # Compiler flags
-CFLAGS = -Wall -Wextra -Werror -I
+CFLAGS = -Wall -Wextra -Werror
 
 # Command to remove files
 RM = rm -f
@@ -42,12 +42,10 @@ SERVER	=	server
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 
-
 # Mandatory Variables
 SRC_C	=	client.c
 SRC_S	=	server.c
-INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack \
-			-I$(LIBFT_DIR)/GNL
+INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack -I$(LIBFT_DIR)/GNL
 
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
@@ -71,16 +69,16 @@ all: $(SERVER) $(CLIENT)
 $(NAME): all
 
 $(SERVER): $(LIBFT)
-	@ $(CC) $(D_FLAG) $(CFLAG) $(SRC_S) $(LIBFT) $(INC) -o $(SERVER)
+	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_S) $(LIBFT) $(INC) -o $(SERVER)
 	@printf "$(_SUCCESS) server ready.\n"
 
 $(CLIENT): $(LIBFT)
-	@ $(CC) $(D_FLAG) $(CFLAG) $(SRC_C) $(LIBFT) $(INC) -o $(CLIENT)
+	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_C) $(LIBFT) $(INC) -o $(CLIENT)
 	@printf "$(_SUCCESS) client ready.\n"
 
 
 $(LIBFT):
-	@ $(MAKE) DEBUG=$(DEBUG) -C ./Libft
+	@ $(MAKE) DEBUG=$(DEBUG) -C $(LIBFT_DIR)
 
 # Rule to clean up object files and dependencies
 clean:
@@ -103,4 +101,4 @@ mandatory:	$(CLIENT) $(SERVER)
 m : mandatory
 
 # Rule to tell make that the listed targets do not correspond to actual files.
-.PHONY: all clean fclean re mandatory m bonus b
+.PHONY: all clean fclean re mandatory m bonus b $(NAME) $(LIBFT)

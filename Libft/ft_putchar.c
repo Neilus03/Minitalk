@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 13:54:29 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/07/22 12:02:54 by nde-la-f         ###   ########.fr       */
+/*   Created: 2023/07/22 12:01:45 by nde-la-f          #+#    #+#             */
+/*   Updated: 2023/07/22 12:02:01 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <ctype.h>
-#include <stdio.h>
 
-int	ft_toupper(int c)
+void	ft_putchar(char c)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 'a' + 'A');
-	return (c);
+	write (1, &c, 1);
 }
-/*
-int main()
-{
-	int c;
-	
-	c =  'u' ;
-	printf("\n%c -> %c",c, ft_toupper(c));
-	printf("\n%c -> %c", c, toupper(c));
-	return 0;
-}
-*/

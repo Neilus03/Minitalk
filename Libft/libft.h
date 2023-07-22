@@ -6,7 +6,7 @@
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 08:58:09 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/02/22 13:23:45 by nde-la-f         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:02:54 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+void	ft_putchar(char c);
 size_t	ft_strlen(const char *c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
