@@ -43,7 +43,7 @@ LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 
 # ft_printf Variables
-FT_PRINTF = ./ft_printf/ft_printf.a
+FT_PRINTF = ./ft_printf/libftprintf.a
 FT_PRINTF_DIR = ./ft_printf
 
 # Mandatory Variables

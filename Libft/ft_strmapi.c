@@ -6,7 +6,7 @@
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:04:07 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/02/23 09:01:36 by nde-la-f         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:53:40 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		while (s[i])
 		{
 			res[i] = (*f)(i, s[i]);
-				i++;
+			i++;
 		}
 	}
 	return (res);

@@ -6,16 +6,12 @@
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:53:59 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/07/22 12:09:53 by nde-la-f         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:56:15 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "minitalk.h"
 
-// Function to send a character to the server
 void	send_char(int server_pid, char c)
 {
 	int	i;
@@ -42,10 +38,10 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		printf("usage: %s <server PID> <string to send>\n", argv[0]);
+		ft_printf("usage: %s <server PID> <string to send>\n", argv[0]);
 		return (1);
 	}
-	server_pid = atoi(argv[1]);
+	server_pid = ft_atoi(argv[1]);
 	str = argv[2];
 	i = 0;
 	while (str[i] != '\0')
