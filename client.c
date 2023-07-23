@@ -6,7 +6,7 @@
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:53:59 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/07/22 14:56:15 by nde-la-f         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:44:23 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		ft_printf("usage: %s <server PID> <string to send>\n", argv[0]);
+		ft_printf("Incorrect usage!\nusage: %s <server PID> <string to send>\n", argv[0]);
 		return (1);
 	}
 	server_pid = ft_atoi(argv[1]);

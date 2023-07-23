@@ -6,7 +6,7 @@
 /*   By: nde-la-f <nde-la-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 11:51:19 by nde-la-f          #+#    #+#             */
-/*   Updated: 2023/07/23 10:37:11 by nde-la-f         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:49:08 by nde-la-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,20 @@ void	handle_sigusr2(int signum)
 
 int	main(void)
 {
-	struct sigaction	sa_usr1;
-	struct sigaction	sa_usr2;
+	struct sigaction	sa_1;
+	struct sigaction	sa_2;
 
 	ft_printf("Server PID: %d\n", getpid());
-	sa_usr1.sa_handler = &handle_sigusr1;
-	sa_usr1.sa_flags = 0;
-	sa_usr2.sa_handler = &handle_sigusr2;
-	sa_usr2.sa_flags = 0;
-	sigaction(SIGUSR1, &sa_usr1, NULL);
-	sigaction(SIGUSR2, &sa_usr2, NULL);
+	sa_1.sa_handler = &handle_sigusr1;
+	sa_1.sa_flags = 0;
+	sa_2.sa_handler = &handle_sigusr2;
+	sa_2.sa_flags = 0;
+	sigaction(SIGUSR1, &sa_1, NULL);
+	sigaction(SIGUSR2, &sa_2, NULL);
 	while (1)
 		pause();
 	return (0);
 }
-
 /*
 main with sigemptyset, it is recommended but not needed
 for this project so for clarity i removed it.
@@ -80,9 +79,8 @@ int	main(void)
 	return (0);
 }
 */
-
 /*
-ALTERNATIVE: EASIER TO COMPREHEND BUT 2 GLOBAL VARS
+ALTERNATIVE BUT 2 GLOBAL VARS
 
 int		g_bit_position = 0;
 char	g_current_char = 0;
