@@ -40,7 +40,7 @@ To send a message from the client to the server, use the following command in an
 
 
 
-Replace `<server_pid>` with the process ID of the server and `<message>` with the string you want to send.
+Replace `<server_pid>` with the process ID of the server and `<"message">` with the string you want to send.
 
 ## Source Files
 
