@@ -31,9 +31,11 @@ To compile both the client and the server, run the following command:
 ```make```
 
 To run the server, execute the following command in one terminal:
+
 ```./server```
 
 To send a message from the client to the server, use the following command in another terminal:
+
 ```./client <server_pid> <"message">```
 
 
