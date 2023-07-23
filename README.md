@@ -34,8 +34,8 @@ To run the server, execute the following command in one terminal:
 ```./server```
 
 To send a message from the client to the server, use the following command in another terminal:
-``````
-./client <server_pid> <"message">
+```./client <server_pid> <"message">```
+
 
 
 Replace `<server_pid>` with the process ID of the server and `<message>` with the string you want to send.
