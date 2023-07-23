@@ -1,6 +1,6 @@
 # Minitalk
 
-Welcome to my "Minitalk" project from 42 Coding School! 🚀
+Welcome to my "Minitalk" project from 42! 🚀
 
 This repository contains my implementation of the "Minitalk" project, a networked application that allows communication between a client and a server using signals. The project focuses on signal handling, interprocess communication, and synchronization.
 
