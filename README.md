@@ -82,7 +82,7 @@ To remove all compiled files, including libraries, use the following command:
 
 ## Contributions
 
-I completed this project as part of my coursework at 42 Coding School. While I don't actively maintain it, feel free to fork the repository, make improvements, and submit pull requests.
+I completed this project as part of my coursework at 42. While I don't actively maintain it, feel free to fork the repository, make improvements, and submit pull requests.
 
 ## Feedback
 
@@ -90,7 +90,7 @@ I'm open to feedback and suggestions for improving my implementation. If you hav
 
 ## Thank You
 
-Thank you for visiting my repository and exploring the "Minitalk" project. I hope you find it informative and useful for your own coding journey. Happy coding! 🌟
+Thank you for visiting my repository and exploring the "Minitalk" project. I hope you find it informative and useful for your own coding journey, if so you can give me a 🌟. Happy coding! 😄
 
 
 
