@@ -24,6 +24,6 @@ The **Minitalk** project aims to create a simple networked application using sig
 
 ## Compile and Run
 
-To compile the "Minitalk" project, you can use the provided Makefile. The project requires the "libft" and "ft_printf" libraries, which are also compiled using their respective Makefiles.
+To compile the **Minitalk** project, you can use the provided Makefile. The project requires the "libft" and "ft_printf" libraries, which are also compiled using their respective Makefiles.
 
 To compile both the client and the server, run the following command:
