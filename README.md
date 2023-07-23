@@ -71,3 +71,26 @@ The server is responsible for receiving and displaying messages from the client.
 ## Clean Up
 
 To clean up the compiled files and object files, use the following command:
+
+```make clean```
+
+To remove all compiled files, including libraries, use the following command:
+
+```make fclean```
+
+
+## Contributions
+
+I completed this project as part of my coursework at 42 Coding School. While I don't actively maintain it, feel free to fork the repository, make improvements, and submit pull requests.
+
+## Feedback
+
+I'm open to feedback and suggestions for improving my implementation. If you have any ideas or spot any issues, please create an issue or reach out to me!
+
+## Thank You
+
+Thank you for visiting my repository and exploring the "Minitalk" project. I hope you find it informative and useful for your own coding journey. Happy coding! 🌟
+
+
+
+
