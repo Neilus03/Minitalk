@@ -6,6 +6,7 @@ This repository contains my implementation of the "Minitalk" project, a networke
 
 ## Table of Contents
 |              CONTENTS                |
+|-----------------------------------------------------| 
 | [Introduction](#introduction)|
 | [Compile and Run](#compile-and-run)|
 | [Source Files](#source-files)|
