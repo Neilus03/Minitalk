@@ -53,6 +53,8 @@ INC		=	-I. -I$(LIBFT_DIR) -I$(LIBFT_DIR)/stack -I$(LIBFT_DIR)/GNL -I$(FT_PRINTF_
 
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
+_READY 		= 	$(GREEN)ready.$(RESET)
+_REMOVED    =   $(YELLOW)removed.$(RESET)
 
 # Debugger
 ifeq ($(DEBUG), 1)
@@ -74,11 +76,11 @@ $(NAME): all
 
 $(SERVER): $(LIBFT) $(FT_PRINTF)
 	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_S) $(LIBFT) $(FT_PRINTF) $(INC) -o $(SERVER)
-	@printf "$(_SUCCESS) server ready.\n"
+	@printf "$(_SUCCESS) server $(_READY)\n"
 
 $(CLIENT): $(LIBFT) $(FT_PRINTF)
 	@ $(CC) $(D_FLAG) $(CFLAGS) $(SRC_C) $(LIBFT) $(FT_PRINTF) $(INC) -o $(CLIENT)
-	@printf "$(_SUCCESS) client ready.\n"
+	@printf "$(_SUCCESS) client $(_READY)\n"
 
 $(LIBFT):
 	@ $(MAKE) DEBUG=$(DEBUG) -C $(LIBFT_DIR)
@@ -89,16 +91,16 @@ $(FT_PRINTF):
 # Rule to clean up object files and dependencies
 clean:
 	@ $(RM) $(CLIENT) $(SERVER)
-	@printf "$(_INFO) client removed.\n"
-	@printf "$(_INFO) server removed.\n"
+	@printf "$(_INFO) client $(_REMOVED)\n"
+	@printf "$(_INFO) server $(_REMOVED)\n"
 
 # Rule to remove the compiled library file and cleaned object files
 fclean:
 	@ $(MAKE) fclean -C $(LIBFT_DIR)
 	@ $(MAKE) fclean -C $(FT_PRINTF_DIR)
 	@ $(RM) $(CLIENT) $(SERVER)
-	@printf "$(_INFO) client removed.\n"
-	@printf "$(_INFO) server removed.\n"
+	@printf "$(_INFO) client $(_REMOVED)\n"
+	@printf "$(_INFO) server $(_REMOVED)\n"
 
 # Rule to completely rebuild the program from scratch
 re: fclean all
