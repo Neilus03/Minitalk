@@ -12,8 +12,6 @@ This repository contains my implementation of the "Minitalk" project, a networke
 | [Source Files](#source-files)|
 | [Dependencies](#dependencies)|
 | [Signal Handling & Bitwise Operations](#Signal-Handling-and-Bitwise-Operations)|
-| [Client Implementation](#client-implementation)|
-| [Server Implementation](#server-implementation)|
 | [Clean Up](#clean-up)|
 | [Contributions](#contributions)|
 | [Feedback](#feedback) |
