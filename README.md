@@ -27,3 +27,45 @@ The **Minitalk** project aims to create a simple networked application using sig
 To compile the **Minitalk** project, you can use the provided Makefile. The project requires the "libft" and "ft_printf" libraries, which are also compiled using their respective Makefiles.
 
 To compile both the client and the server, run the following command:
+
+```make```
+
+To run the server, execute the following command in one terminal:
+```./server```
+
+To send a message from the client to the server, use the following command in another terminal:
+``````
+./client <server_pid> <"message">
+
+
+Replace `<server_pid>` with the process ID of the server and `<message>` with the string you want to send.
+
+## Source Files
+
+The "Minitalk" project consists of the following source files:
+
+- `server.c`: Implementation of the server that receives and displays messages from the client.
+- `client.c`: Implementation of the client that sends messages to the server.
+
+## Dependencies
+
+The "Minitalk" project relies on the following libraries:
+
+- `libft`: A custom library developed during the "libft" project, providing essential functions for memory manipulation and string handling.
+- `ft_printf`: A custom implementation of the printf function for formatted printing.
+
+## Signal Handling
+
+Signal handling is a crucial aspect of the "Minitalk" project. The communication between the client and the server is established using SIGUSR1 and SIGUSR2 signals.
+
+## Client Implementation
+
+The client is responsible for sending messages to the server. The `send_char` function converts each character of the message into a series of bits and sends them to the server using signals.
+
+## Server Implementation
+
+The server is responsible for receiving and displaying messages from the client. The server uses signal handlers (`handle_sigusr1` and `handle_sigusr2`) to interpret the signals received from the client and reconstruct the original message.
+
+## Clean Up
+
+To clean up the compiled files and object files, use the following command:
