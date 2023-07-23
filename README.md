@@ -67,7 +67,7 @@ The client is responsible for sending messages to the server. The `send_char` fu
 
 ## Server Implementation
 
-The server is responsible for receiving and displaying messages from the client. The server uses signal handlers (`handle_sigusr1` and `handle_sigusr2`) to interpret the signals received from the client and reconstruct the original message.
+The server is responsible for receiving and displaying messages from the client. The server uses signal handlers (`handle_sigusr1` and `handle_sigusr2`) to interpret the signals received from the client and reconstruct the original message. ```SIGUSR1``` will represent 0 and ```SIGUSR2``` will represent 1.
 
 ## Clean Up
 
