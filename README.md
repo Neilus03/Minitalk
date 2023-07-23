@@ -20,7 +20,7 @@ This repository contains my implementation of the "Minitalk" project, a networke
 
 ## Introduction
 
-The "Minitalk" project aims to create a simple networked application using signals for interprocess communication. The client sends a string message to the server, and the server displays the received message. Signal handling and synchronization are crucial aspects of this project.
+The **Minitalk** project aims to create a simple networked application using signals for interprocess communication. The client sends a string message to the server, and the server displays the received message. Signal handling and synchronization are crucial aspects of this project.
 
 ## Compile and Run
 
