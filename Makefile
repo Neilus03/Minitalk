@@ -24,7 +24,7 @@ CC = gcc
 # Compiler flags
 CFLAGS = -Wall -Wextra -Werror
 
-# Command to remove files
+# Command to remove files 
 RM = rm -f
 
 # Command to run norminette
