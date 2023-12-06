@@ -53,7 +53,7 @@ int	main(void)
 	while (1)
 		pause();
 	return (0);
-}
+} 
 /*
 main with sigemptyset, it is recommended but not needed
 for this project so for clarity i removed it.
